@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import '../../../core/utils/app_colors.dart';
 import 'widget/on_boarding_page.dart';
 
 class Onboarding extends StatefulWidget {
@@ -18,6 +19,7 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryBackgroundColor,
       body: Column(
         children: [
           Expanded(
