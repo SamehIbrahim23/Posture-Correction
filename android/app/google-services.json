@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "865679275151",
+    "project_id": "gp-posture-correction",
+    "storage_bucket": "gp-posture-correction.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865679275151:android:a2a167fcfa8369fa37ecfa",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXC5XQr9-beECHp1vDc23d62f_SfOtjCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
