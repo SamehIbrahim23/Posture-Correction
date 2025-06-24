@@ -23,13 +23,6 @@ class ProfileItemsListView extends StatelessWidget {
                 await FirebaseAuth.instance.currentUser!.reload();
               },
             );
-          } else if (index == 1) {
-            return ProfileItem(
-              leadingIcon: FontAwesomeIcons.creditCard,
-              title: 'Payment Methods',
-              bottomDivider: true,
-              onTap: () {},
-            );
           } else if (index == 2) {
             return ProfileItem(
               leadingIcon: FontAwesomeIcons.gear,
