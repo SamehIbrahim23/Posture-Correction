@@ -73,7 +73,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
             child: SingleChildScrollView(
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 45),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

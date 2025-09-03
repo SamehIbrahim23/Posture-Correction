@@ -42,7 +42,7 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
             ),
             SizedBox(height: 20),
 
-            // Time filter tabs
+            // Time filter tabs - Only Day and Week
             Container(
               padding: EdgeInsets.all(4),
               decoration: BoxDecoration(
@@ -50,7 +50,7 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
-                children: ['Day', 'Week', 'Month'].map((timeframe) {
+                children: ['Day', 'Week'].map((timeframe) {
                   bool isSelected = selectedTimeframe == timeframe;
                   return Expanded(
                     child: GestureDetector(
@@ -82,7 +82,7 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
             ),
             SizedBox(height: 30),
 
-            // Posture Time Chart
+            // Posture Time Chart - Only Good and Poor
             Text(
               'Posture Time',
               style: TextStyle(
@@ -110,7 +110,7 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
                       sideTitles: SideTitles(
                         showTitles: true,
                         getTitlesWidget: (value, meta) {
-                          const titles = ['Good', 'Neutral', 'Poor'];
+                          const titles = ['Good', 'Poor'];
                           return Text(
                             titles[value.toInt()],
                             style: TextStyle(
@@ -123,13 +123,12 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
                     ),
                     leftTitles:
                         AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    topTitles:
-                        AxisTitles(sideTitles: SideTitles(showTitles: false)),
                     rightTitles:
                         AxisTitles(sideTitles: SideTitles(showTitles: false)),
                   ),
                   borderData: FlBorderData(show: false),
                   barGroups: [
+                    // Good Posture Bar
                     BarChartGroupData(x: 0, barRods: [
                       BarChartRodData(
                           toY: 80,
@@ -137,14 +136,8 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
                           width: 40,
                           borderRadius: BorderRadius.circular(4))
                     ]),
+                    // Poor Posture Bar
                     BarChartGroupData(x: 1, barRods: [
-                      BarChartRodData(
-                          toY: 60,
-                          color: AppColors.secondButtonColor,
-                          width: 40,
-                          borderRadius: BorderRadius.circular(4))
-                    ]),
-                    BarChartGroupData(x: 2, barRods: [
                       BarChartRodData(
                           toY: 30,
                           color: AppColors.thirdButtonColor,
@@ -182,7 +175,7 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
             _buildTrendCard(),
             SizedBox(height: 30),
 
-            // Daily Breakdown
+            // Daily Breakdown - Only Good and Poor
             Text(
               'Daily Breakdown',
               style: TextStyle(
@@ -192,11 +185,9 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
               ),
             ),
             SizedBox(height: 15),
-            _buildBreakdownItem(Icons.check_circle, 'Good Posture', '8h 15m',
+            _buildBreakdownItem(Icons.check_circle, 'Good Posture', '10h 30m',
                 AppColors.primaryColor),
-            _buildBreakdownItem(Icons.remove_circle, 'Neutral Posture',
-                '2h 45m', AppColors.secondButtonColor),
-            _buildBreakdownItem(Icons.cancel, 'Poor Posture', '1h 30m',
+            _buildBreakdownItem(Icons.cancel, 'Poor Posture', '2h 00m',
                 AppColors.thirdButtonColor),
             SizedBox(height: 30),
 
@@ -345,7 +336,7 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Text(
-                'Your posture score has improved by 5% over the last week. Maintaining an active lifestyle can help sustain this progress. Consider incorporating more exercises that strengthen your core and back muscles.',
+                'Your posture score has improved by 5% over the last week. You spent 83% of your time in good posture. Consider incorporating more exercises that strengthen your core and back muscles to further reduce poor posture time.',
                 style: TextStyle(
                   fontSize: 14,
                   color: AppColors.n48,
@@ -353,6 +344,7 @@ class _PostureStatisticsScreenState extends State<PostureStatisticsScreen> {
                 ),
               ),
             ),
+            SizedBox(height: 80),
           ],
         ),
       ),

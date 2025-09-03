@@ -20,7 +20,7 @@ abstract class AppRouters {
         pageBuilder: (context, state) => CustomSliderTransition(
           key: state.pageKey,
           child: const SplashScreen(),
-          duration: 300,
+          duration: 700,
         ),
       ),
       GoRoute(

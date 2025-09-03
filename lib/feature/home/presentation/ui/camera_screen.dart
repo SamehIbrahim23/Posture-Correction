@@ -22,9 +22,8 @@ class _CameraScreenState extends State<CameraScreen>
   bool _isStreaming = false;
   int _frameCount = 0;
   double _fps = 0;
-  var formController = TextEditingController();
 
-  String _serverUrl = 'ws://172.20.10.2:5001';
+  String _serverUrl = 'ws://192.168.1.4:5001';
   Uint8List? _processedFrame;
   bool _showProcessedFrame = false;
   bool _isConnected = false;
@@ -750,55 +749,6 @@ class _CameraScreenState extends State<CameraScreen>
                       ),
                   ],
                 ),
-                //   Padding(
-                //     padding:
-                //         const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
-                //     child: TextField(
-                //       controller: formController,
-                //       style: const TextStyle(
-                //         color: Colors.white,
-                //         fontSize: 16,
-                //       ),
-                //       decoration: InputDecoration(
-                //         enabledBorder: OutlineInputBorder(
-                //           borderSide: BorderSide(color: Colors.purple),
-                //           borderRadius: BorderRadius.circular(15),
-                //         ),
-                //         focusedBorder: OutlineInputBorder(
-                //           borderSide: BorderSide(color: Colors.purple),
-                //           borderRadius: BorderRadius.circular(15),
-                //         ),
-                //         border: OutlineInputBorder(
-                //           borderSide: BorderSide(color: Colors.purple),
-                //           borderRadius: BorderRadius.circular(15),
-                //         ),
-                //         fillColor: Colors.white,
-                //         hintText: 'Enter your ip address ex.192.162.1.5:5001',
-                //         hintStyle: TextStyle(
-                //           color: Colors.purple,
-                //         ),
-                //         suffixIcon: IconButton(
-                //           icon: Icon(
-                //             Icons.send,
-                //             color: Colors.purple,
-                //           ),
-                //           onPressed: () {
-                //             setState(() {
-                //               _serverUrl = "ws://${formController.text}:5001";
-                //             });
-                //             formController.clear();
-                //             FocusScope.of(context).unfocus(); // Dismiss keyboard
-                //           },
-                //         ),
-                //       ),
-                //       onSubmitted: (value) {
-                //         setState(() {
-                //           _serverUrl = "ws://${formController.text}:5001";
-                //         });
-                //         formController.clear();
-                //       },
-                //     ),
-                //   ),
               ],
             ),
           ),

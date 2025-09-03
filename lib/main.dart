@@ -5,6 +5,7 @@ import 'package:camera_stream/core/logic/switch_views_cubit/switch_views_cubit.d
     show SwitchViewsCubit;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
@@ -15,6 +16,11 @@ Future<void> main() async {
     create: (context) => SwitchViewsCubit(),
     child: const MyApp(),
   ));
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
 }
 
 extension SizeDevice on BuildContext {

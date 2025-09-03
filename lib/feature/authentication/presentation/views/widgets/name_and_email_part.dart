@@ -25,7 +25,7 @@ class NameAndEmailPart extends StatelessWidget {
         ),
         CustomTextFormField(
           textEditingController: textEditingController,
-          hint: 'Hazem Ahmed',
+          hint: 'Your Name',
           validator: (value) {
             if (value == null || value == '') {
               return 'Please enter your name';
