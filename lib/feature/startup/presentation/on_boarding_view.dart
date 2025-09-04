@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,14 +5,14 @@ import '../../../core/routing/routes.dart';
 import '../../../core/utils/app_colors.dart';
 import 'widget/on_boarding_page.dart';
 
-class Onboarding extends StatefulWidget {
-  const Onboarding({super.key});
+class OnboardingView extends StatefulWidget {
+  const OnboardingView({super.key});
 
   @override
-  _OnboardingState createState() => _OnboardingState();
+  _OnboardingViewState createState() => _OnboardingViewState();
 }
 
-class _OnboardingState extends State<Onboarding> {
+class _OnboardingViewState extends State<OnboardingView> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
@@ -28,7 +26,7 @@ class _OnboardingState extends State<Onboarding> {
             child: PageView(
               controller: _pageController,
               onPageChanged: (int page) => setState(() => _currentPage = page),
-              children: [
+              children: const [
                 OnboardingPage(
                     image: 'assets/images/1.jpg',
                     title: "Welcome to Posture App",
@@ -48,7 +46,7 @@ class _OnboardingState extends State<Onboarding> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -56,15 +54,15 @@ class _OnboardingState extends State<Onboarding> {
                   children: List.generate(
                     3,
                     (index) => AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeIn,
-                      margin: EdgeInsets.symmetric(horizontal: 4),
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
                       width: _currentPage == index ? 20 : 8,
                       height: 8,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(6),
                         color: _currentPage == index
-                            ? Color(0xff704F38)
+                            ? const Color(0xff704F38)
                             : Colors.grey.shade500,
                       ),
                     ),
@@ -74,7 +72,7 @@ class _OnboardingState extends State<Onboarding> {
                   onPressed: () {
                     if (_currentPage < 2) {
                       _pageController.nextPage(
-                        duration: Duration(milliseconds: 300),
+                        duration: const Duration(milliseconds: 300),
                         curve: Curves.easeIn,
                       );
                     } else {
@@ -82,7 +80,7 @@ class _OnboardingState extends State<Onboarding> {
                     }
                   },
                   child: Text(_currentPage == 2 ? "FINISH" : "NEXT",
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xff704F38),
                       )),
                 ),

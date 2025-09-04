@@ -1,6 +1,6 @@
 class Routes {
-  static const streaming = '/streaming';
   static const splash = '/';
+  static const streaming = '/streaming';
   static const switchView = '/switchView';
   static const camera = '/camera';
   static const signIn = '/signIn';

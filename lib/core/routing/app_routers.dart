@@ -27,7 +27,7 @@ abstract class AppRouters {
         path: Routes.onBoarding,
         pageBuilder: (context, state) => CustomSliderTransition(
           key: state.pageKey,
-          child: const Onboarding(),
+          child: const OnboardingView(),
           duration: 300,
         ),
       ),
