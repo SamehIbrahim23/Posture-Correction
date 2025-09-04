@@ -20,14 +20,14 @@ abstract class AppRouters {
         pageBuilder: (context, state) => CustomSliderTransition(
           key: state.pageKey,
           child: const SplashScreen(),
-          duration: 700,
+          duration: 300,
         ),
       ),
       GoRoute(
         path: Routes.onBoarding,
         pageBuilder: (context, state) => CustomSliderTransition(
           key: state.pageKey,
-          child: const Onboarding(),
+          child: const OnboardingView(),
           duration: 300,
         ),
       ),

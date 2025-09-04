@@ -27,6 +27,7 @@ class StreamingView extends StatelessWidget {
           }
           if (snapshot.hasError) {
             showSnackBar(context: context, e: 'Oops, there somthing wrong');
+            return const SignInView();
           }
           if (snapshot.data == null) {
             return const SignInView();

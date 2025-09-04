@@ -5,8 +5,11 @@ import 'dart:typed_data';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
+
+import '../../../statistics/presentation/logic/statistical_cubit.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({Key? key, required this.cameras}) : super(key: key);
@@ -136,8 +139,31 @@ class _CameraScreenState extends State<CameraScreen>
         _processNextFrame();
       }
     } else if (message is String) {
+      // Log the raw JSON string
+      debugPrint('Received JSON message: $message');
+
+      // Add statistics to cubit
+      context.read<StatisticsCubit>().addStatistics(message);
+
       try {
         final data = json.decode(message);
+
+        // Log the parsed JSON data
+        debugPrint('Parsed JSON data: $data');
+        debugPrint('JSON type: ${data.runtimeType}');
+
+        if (data is Map<String, dynamic>) {
+          debugPrint('JSON keys: ${data.keys.toList()}');
+
+          // Log specific fields if they exist
+          if (data.containsKey('type')) {
+            debugPrint('Message type: ${data['type']}');
+          }
+          if (data.containsKey('message')) {
+            debugPrint('Message content: ${data['message']}');
+          }
+        }
+
         if (data['type'] == 'feedback') {
           final now = DateTime.now();
           if (_lastFeedback != data['message'] ||
@@ -159,8 +185,13 @@ class _CameraScreenState extends State<CameraScreen>
           }
         }
       } catch (e) {
-        debugPrint('Error parsing message: $e');
+        debugPrint('Error parsing JSON message: $e');
+        debugPrint('Raw message that failed to parse: $message');
       }
+    } else {
+      // Log unexpected message types
+      debugPrint('Received unexpected message type: ${message.runtimeType}');
+      debugPrint('Message content: $message');
     }
   }
 
@@ -204,10 +235,6 @@ class _CameraScreenState extends State<CameraScreen>
       setState(() => _isStreaming = false);
     }
   }
-// In _CameraScreenState class
-
-// Replace the _processImageFrame method with this optimized version:
-// In _CameraScreenState class
 
 // Replace the _processImageFrame method with this optimized version:
   Future<void> _processImageFrame(CameraImage image) async {
